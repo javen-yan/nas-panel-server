@@ -1,0 +1,80 @@
+2025-09-18 12:50:10,798 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:50:10,798 - nas_panel_server.config_manager - INFO - Loading configuration from config.yaml
+2025-09-18 12:50:10,800 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:50:10,800 - nas_panel_server.server - ERROR - Configuration validation failed:
+2025-09-18 12:50:10,800 - nas_panel_server.server - ERROR -   - Custom collectors must be a list
+2025-09-18 12:50:28,602 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:50:28,603 - nas_panel_server.config_manager - INFO - Loading configuration from config.yaml
+2025-09-18 12:50:28,604 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:50:28,605 - nas_panel_server.server - INFO - NAS Panel Server initialized successfully
+2025-09-18 12:50:28,605 - nas_panel_server.server - INFO - Testing data collection...
+2025-09-18 12:50:29,610 - nas_panel_server.server - INFO - Data collection test successful
+2025-09-18 12:50:37,910 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:50:37,910 - nas_panel_server.config_manager - INFO - Loading configuration from config.yaml
+2025-09-18 12:50:37,912 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - NAS Panel Server initialized successfully
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - Starting NAS Panel Server...
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - Server hostname: NAS-Server
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - MQTT broker: 0.0.0.0:1883
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - MQTT topic: nas/panel/data
+2025-09-18 12:50:37,912 - nas_panel_server.server - INFO - Collection interval: 5s
+2025-09-18 12:50:37,913 - nas_panel_server.mqtt_server - ERROR - Failed to start MQTT server: Client.__init__() missing 1 required positional argument: 'callback_api_version'
+2025-09-18 12:50:37,913 - nas_panel_server.data_collector - ERROR - Failed to start data collector: Client.__init__() missing 1 required positional argument: 'callback_api_version'
+2025-09-18 12:50:37,913 - nas_panel_server.server - ERROR - Error starting server: Client.__init__() missing 1 required positional argument: 'callback_api_version'
+2025-09-18 12:51:19,187 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:51:19,187 - nas_panel_server.config_manager - INFO - Loading configuration from config.yaml
+2025-09-18 12:51:19,189 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - NAS Panel Server initialized successfully
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - Starting NAS Panel Server...
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - Server hostname: NAS-Server
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - MQTT broker: 0.0.0.0:1883
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - MQTT topic: nas/panel/data
+2025-09-18 12:51:19,189 - nas_panel_server.server - INFO - Collection interval: 5s
+2025-09-18 12:51:19,190 - nas_panel_server.mqtt_server - INFO - Starting MQTT server on 0.0.0.0:1883
+2025-09-18 12:51:19,191 - nas_panel_server.mqtt_server - INFO - MQTT server started successfully
+2025-09-18 12:51:19,191 - nas_panel_server.data_collector - INFO - Starting data collection loop
+2025-09-18 12:51:19,191 - nas_panel_server.data_collector - INFO - Data collector started with 5s interval
+2025-09-18 12:51:19,191 - nas_panel_server.server - INFO - NAS Panel Server started successfully
+2025-09-18 12:51:19,192 - nas_panel_server.server - INFO - Press Ctrl+C to stop the server
+2025-09-18 12:51:20,203 - nas_panel_server.mqtt_server - ERROR - Failed to publish data: 4
+2025-09-18 12:51:20,203 - nas_panel_server.data_collector - WARNING - Failed to publish data
+2025-09-18 12:51:25,195 - nas_panel_server.mqtt_server - ERROR - Failed to publish data: 4
+2025-09-18 12:51:25,195 - nas_panel_server.data_collector - WARNING - Failed to publish data
+2025-09-18 12:51:29,054 - nas_panel_server.server - INFO - Received signal 15, shutting down...
+2025-09-18 12:51:29,055 - nas_panel_server.server - INFO - Stopping NAS Panel Server...
+2025-09-18 12:51:29,055 - nas_panel_server.data_collector - INFO - Stopping data collector...
+2025-09-18 12:51:29,055 - nas_panel_server.mqtt_server - INFO - Stopping MQTT server...
+2025-09-18 12:51:29,192 - nas_panel_server.data_collector - INFO - Data collection loop stopped
+2025-09-18 12:51:29,192 - nas_panel_server.mqtt_server - INFO - MQTT server stopped
+2025-09-18 12:51:29,192 - nas_panel_server.data_collector - INFO - Data collector stopped
+2025-09-18 12:51:29,192 - nas_panel_server.server - INFO - NAS Panel Server stopped successfully
+2025-09-18 12:51:55,880 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:51:55,880 - nas_panel_server.config_manager - INFO - Loading configuration from config.yaml
+2025-09-18 12:51:55,882 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - NAS Panel Server initialized successfully
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - Starting NAS Panel Server...
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - Server hostname: NAS-Server
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - MQTT broker: 0.0.0.0:1883
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - MQTT topic: nas/panel/data
+2025-09-18 12:51:55,882 - nas_panel_server.server - INFO - Collection interval: 5s
+2025-09-18 12:51:55,883 - nas_panel_server.mqtt_server - INFO - Starting MQTT server on 0.0.0.0:1883
+2025-09-18 12:51:55,883 - nas_panel_server.mqtt_server - INFO - Note: This is a simplified MQTT implementation for demonstration
+2025-09-18 12:51:55,884 - nas_panel_server.mqtt_server - INFO - MQTT server started successfully
+2025-09-18 12:51:55,884 - nas_panel_server.data_collector - INFO - Starting data collection loop
+2025-09-18 12:51:55,884 - nas_panel_server.data_collector - INFO - Data collector started with 5s interval
+2025-09-18 12:51:55,884 - nas_panel_server.server - INFO - NAS Panel Server started successfully
+2025-09-18 12:51:55,884 - nas_panel_server.server - INFO - Press Ctrl+C to stop the server
+2025-09-18 12:52:05,758 - nas_panel_server.server - INFO - Received signal 15, shutting down...
+2025-09-18 12:52:05,759 - nas_panel_server.server - INFO - Stopping NAS Panel Server...
+2025-09-18 12:52:05,759 - nas_panel_server.data_collector - INFO - Stopping data collector...
+2025-09-18 12:52:05,759 - nas_panel_server.mqtt_server - INFO - Stopping MQTT server...
+2025-09-18 12:52:05,884 - nas_panel_server.data_collector - INFO - Data collection loop stopped
+2025-09-18 12:52:05,885 - nas_panel_server.mqtt_server - INFO - MQTT server stopped
+2025-09-18 12:52:05,885 - nas_panel_server.data_collector - INFO - Data collector stopped
+2025-09-18 12:52:05,885 - nas_panel_server.server - INFO - NAS Panel Server stopped successfully
+2025-09-18 12:52:31,162 - nas_panel_server.server - INFO - Initializing NAS Panel Server
+2025-09-18 12:52:31,163 - nas_panel_server.config_manager - INFO - Loading configuration from config_example.yaml
+2025-09-18 12:52:31,167 - nas_panel_server.config_manager - INFO - Configuration loaded successfully
+2025-09-18 12:52:31,168 - nas_panel_server.server - INFO - NAS Panel Server initialized successfully
+2025-09-18 12:52:31,168 - nas_panel_server.server - INFO - Testing data collection...
+2025-09-18 12:52:32,183 - nas_panel_server.server - INFO - Data collection test successful

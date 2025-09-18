@@ -1,0 +1,68 @@
+# NAS Panel Server Configuration - Example with Custom Collectors
+server:
+  hostname: "My-NAS-Server"
+  ip: "192.168.1.100"  # or "auto" to detect automatically
+  
+mqtt:
+  host: "0.0.0.0"
+  port: 1883
+  topic: "nas/panel/data"
+  qos: 1
+  
+collection:
+  interval: 3  # seconds - collect data every 3 seconds
+  
+# Custom collection parameters - Examples
+custom_collectors:
+  # Example 1: Read GPU temperature from system file
+  - name: "gpu_temp"
+    type: "file"
+    path: "/sys/class/thermal/thermal_zone1/temp"
+    transform: "lambda x: float(x) / 1000"
+    unit: "°C"
+  
+  # Example 2: Count running Docker containers
+  - name: "docker_containers"
+    type: "command"
+    command: "docker ps -q | wc -l"
+    transform: "lambda x: int(x)"
+    unit: "containers"
+  
+  # Example 3: Get system uptime
+  - name: "uptime"
+    type: "command"
+    command: "uptime -p"
+    unit: "time"
+  
+  # Example 4: Read CPU frequency
+  - name: "cpu_freq"
+    type: "file"
+    path: "/proc/cpuinfo"
+    transform: "lambda x: x.split('\\n')[7].split(':')[1].strip() if len(x.split('\\n')) > 7 else 'unknown'"
+    unit: "MHz"
+  
+  # Example 5: Get available disk space for /home
+  - name: "home_space"
+    type: "command"
+    command: "df -h /home | awk 'NR==2 {print $4}'"
+    unit: "space"
+  
+  # Example 6: Read custom environment variable
+  - name: "custom_setting"
+    type: "env"
+    variable: "NAS_CUSTOM_VALUE"
+    default: "not_set"
+  
+  # Example 7: Monitor network interface statistics
+  - name: "eth0_rx_bytes"
+    type: "file"
+    path: "/sys/class/net/eth0/statistics/rx_bytes"
+    transform: "lambda x: int(x) if x.strip().isdigit() else 0"
+    unit: "bytes"
+  
+  # Example 8: Get load average
+  - name: "load_avg"
+    type: "command"
+    command: "cat /proc/loadavg | cut -d' ' -f1"
+    transform: "lambda x: float(x)"
+    unit: "load"
