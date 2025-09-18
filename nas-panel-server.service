@@ -1,0 +1,34 @@
+[Unit]
+Description=NAS Panel Server - System monitoring with MQTT publishing
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=nas-panel
+Group=nas-panel
+WorkingDirectory=/opt/nas-panel-server
+ExecStart=/opt/nas-panel-server/venv/bin/python /opt/nas-panel-server/main.py -c /etc/nas-panel-server/config.yaml
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=5
+
+# Environment variables
+Environment=PYTHONPATH=/opt/nas-panel-server
+Environment=NAS_PANEL_LOG_LEVEL=INFO
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/log/nas-panel-server /var/lib/nas-panel-server
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+# Capabilities (if needed for hardware monitoring)
+# AmbientCapabilities=CAP_SYS_ADMIN
+
+[Install]
+WantedBy=multi-user.target

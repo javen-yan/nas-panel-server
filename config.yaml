@@ -1,0 +1,22 @@
+# NAS Panel Server Configuration
+server:
+  hostname: "NAS-Server"
+  ip: "auto"  # auto to detect, or specify manually like "192.168.1.100"
+  
+mqtt:
+  host: "0.0.0.0"
+  port: 1883
+  topic: "nas/panel/data"
+  qos: 1
+  
+collection:
+  interval: 5  # seconds
+  
+# Custom collection parameters
+custom_collectors: []
+  # Example: add custom temperature sensors
+  # - name: "gpu_temp"
+  #   type: "file"
+  #   path: "/sys/class/thermal/thermal_zone1/temp"
+  #   transform: "lambda x: float(x) / 1000"
+  #   unit: "°C"
