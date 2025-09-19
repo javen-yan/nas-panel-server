@@ -31,7 +31,7 @@ class SystemCollector(BaseCollector):
         }
     
     def _get_hostname(self) -> str:
-        """Get system hostname."""
+        """Get system hostname - always use auto-detected hostname."""
         config_hostname = self.config.get('server', {}).get('hostname')
         if config_hostname and config_hostname != 'auto':
             return config_hostname

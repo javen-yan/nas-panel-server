@@ -55,7 +55,7 @@ fi
 # Install dependencies
 print_color $BLUE "Installing dependencies..."
 if [ -f "requirements.txt" ]; then
-    pip install -r requirements.txt
+    pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 else
     print_color $RED "Error: requirements.txt not found"
     exit 1

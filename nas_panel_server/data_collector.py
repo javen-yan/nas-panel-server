@@ -7,7 +7,7 @@ import threading
 import logging
 from typing import Dict, Any, List
 from .collectors import SystemCollector, CustomCollector
-from .mqtt_server import MQTTServer
+from .mqtt import MQTTManager
 
 
 class DataCollector:
@@ -24,8 +24,8 @@ class DataCollector:
         self.system_collector = SystemCollector(config)
         self.custom_collector = CustomCollector(config)
         
-        # Initialize MQTT server
-        self.mqtt_server = MQTTServer(config)
+        # Initialize MQTT manager
+        self.mqtt_manager = MQTTManager(config)
         
         # Control variables
         self.is_running = False
@@ -40,8 +40,8 @@ class DataCollector:
             return
         
         try:
-            # Start MQTT server first
-            self.mqtt_server.start()
+            # Start MQTT manager first
+            self.mqtt_manager.start()
             
             # Start collection thread
             self.is_running = True
@@ -63,8 +63,8 @@ class DataCollector:
         self.logger.info("Stopping data collector...")
         self.is_running = False
         
-        # Stop MQTT server
-        self.mqtt_server.stop()
+        # Stop MQTT manager
+        self.mqtt_manager.stop()
         
         # Wait for collection thread to finish
         if self.collection_thread:
@@ -109,7 +109,7 @@ class DataCollector:
                 
                 if data:
                     # Publish to MQTT
-                    success = self.mqtt_server.publish_data(data)
+                    success = self.mqtt_manager.publish_data(data)
                     if success:
                         self.logger.debug("Data published successfully")
                     else:
@@ -153,8 +153,8 @@ class ScheduledCollector:
             # Schedule the collection job
             schedule.every(interval).seconds.do(self._collect_and_publish)
             
-            # Start MQTT server
-            self.data_collector.mqtt_server.start()
+            # Start MQTT manager
+            self.data_collector.mqtt_manager.start()
             
             self.logger.info(f"Scheduled collector started with {interval}s interval")
             
@@ -182,6 +182,6 @@ class ScheduledCollector:
         try:
             data = self.data_collector.collect_once()
             if data:
-                self.data_collector.mqtt_server.publish_data(data)
+                self.data_collector.mqtt_manager.publish_data(data)
         except Exception as e:
             self.logger.error(f"Error in scheduled collection: {e}")

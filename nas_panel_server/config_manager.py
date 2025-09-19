@@ -15,7 +15,7 @@ class ConfigManager:
     
     DEFAULT_CONFIG = {
         'server': {
-            'hostname': 'NAS-Server',
+            'hostname': 'auto',  # Always use auto-detected hostname
             'ip': 'auto'
         },
         'mqtt': {

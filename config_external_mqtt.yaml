@@ -1,19 +1,18 @@
-# NAS Panel Server Configuration
+# NAS Panel Server Configuration - External MQTT
 server:
   hostname: "auto"  # auto to detect hostname automatically, or specify manually
   ip: "auto"  # auto to detect, or specify manually like "192.168.1.100"
   
 mqtt:
-  type: "builtin"  # "builtin" for built-in MQTT server, "external" for external MQTT broker
-  host: "0.0.0.0"
-  port: 1883
+  type: "external"  # Use external MQTT broker
+  host: "localhost"  # External MQTT broker host
+  port: 1883  # External MQTT broker port
   topic: "nas/panel/data"
   qos: 1
-  # External MQTT settings (only used when type is "external")
-  # username: "mqtt_user"
-  # password: "mqtt_password"
-  # client_id: "nas_panel_server"
-  # keep_alive: 60
+  # username: "mqtt_user"  # Optional: MQTT username
+  # password: "mqtt_password"  # Optional: MQTT password
+  client_id: "nas_panel_server"  # Optional: MQTT client ID
+  keep_alive: 60  # Optional: Keep alive interval
   
 collection:
   interval: 5  # seconds

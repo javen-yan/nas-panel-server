@@ -39,6 +39,9 @@ class NASPanelServer:
             for error in errors:
                 self.logger.error(f"  - {error}")
             raise ValueError("Invalid configuration")
+
+        # Print configuration summary
+        self._print_service_info(self.config_manager.get_config())
         
         # Initialize data collector
         self.data_collector = DataCollector(self.config_manager.get_config())
@@ -69,6 +72,50 @@ class NASPanelServer:
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
     
+    def _print_service_info(self, config: dict) -> None:
+        """Print detailed service configuration and usage information."""
+        print("\n" + "="*80)
+        print("🚀 NAS Panel Server Information")
+        print("="*80)
+        
+        # Server Basic Information
+        server_config = config.get('server', {})
+        mqtt_config = config.get('mqtt', {})
+        collection_config = config.get('collection', {})
+        
+        print(f"\n📊 Server Configuration:")
+        print(f"   • Hostname: {server_config.get('hostname', 'auto')} (auto-detected)")
+        print(f"   • IP Address: {server_config.get('ip', 'auto')} (auto-detected)")
+        print(f"   • Data Collection Interval: {collection_config.get('interval', 5)} seconds")
+        
+        # MQTT 配置信息
+        mqtt_type = mqtt_config.get('type', 'builtin')
+        print(f"\n📡 MQTT Configuration:")
+        if mqtt_type == 'builtin':
+            print(f"   • Type: Built-in MQTT Server")
+            print(f"   • Listening Address: {mqtt_config.get('host', '0.0.0.0')}:{mqtt_config.get('port', 1883)}")
+        else:
+            print(f"   • Type: External MQTT Client")
+            print(f"   • Connection Address: {mqtt_config.get('host', 'localhost')}:{mqtt_config.get('port', 1883)}")
+            if mqtt_config.get('username'):
+                print(f"   • Username: {mqtt_config.get('username')}")
+        
+        print(f"   • Publish Topic: {mqtt_config.get('topic', 'nas/panel/data')}")
+        print(f"   • QoS Level: {mqtt_config.get('qos', 1)}")
+        
+        # Custom Collectors Information
+        custom_collectors = config.get('custom_collectors', [])
+        if custom_collectors:
+            print(f"\n🔧 Custom Collectors ({len(custom_collectors)}):")
+            for i, collector in enumerate(custom_collectors, 1):
+                print(f"   {i}. {collector.get('name', 'unknown')} ({collector.get('type', 'unknown')})")
+                if collector.get('unit'):
+                    print(f"       Unit: {collector.get('unit')}")
+        else:
+            print(f"\n🔧 Custom Collectors: None")
+        print("="*80)
+        print()
+    
     def start(self) -> None:
         """Start the NAS Panel Server."""
         try:
@@ -90,8 +137,7 @@ class NASPanelServer:
             # Start data collector
             self.data_collector.start()
             
-            self.logger.info("NAS Panel Server started successfully")
-            self.logger.info("Press Ctrl+C to stop the server")
+            self.logger.info("NAS Panel Server started successfully, Press Ctrl+C to stop the server")
             
             # Keep the main thread alive
             try:
