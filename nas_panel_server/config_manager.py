@@ -97,6 +97,7 @@ class ConfigManager:
             'NAS_PANEL_IP': ('server', 'ip'),
             'NAS_PANEL_MQTT_HOST': ('mqtt', 'host'),
             'NAS_PANEL_MQTT_PORT': ('mqtt', 'port'),
+            'NAS_PANEL_MQTT_TYPE': ('mqtt', 'type'),
             'NAS_PANEL_MQTT_TOPIC': ('mqtt', 'topic'),
             'NAS_PANEL_MQTT_QOS': ('mqtt', 'qos'),
             'NAS_PANEL_INTERVAL': ('collection', 'interval'),

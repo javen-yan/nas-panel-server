@@ -27,7 +27,6 @@ class NASPanelServer:
         self._setup_logging()
         
         self.logger = logging.getLogger(__name__)
-        self.logger.info("Initializing NAS Panel Server")
         
         # Load configuration
         self.config_manager = ConfigManager(config_path)
@@ -58,7 +57,7 @@ class NASPanelServer:
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[
                 logging.StreamHandler(sys.stdout),
-                logging.FileHandler('nas_panel_server.log', mode='a')
+                logging.FileHandler('run.log', mode='a')
             ]
         )
     
